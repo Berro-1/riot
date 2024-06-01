@@ -1,0 +1,38 @@
+.full-page-image {
+    width: 100%;
+    height: 90vh;
+    background-image: url('../../assets/tft-st1124-art-kv-01-final-3840x1600-revised.png'); /* Update the path as needed */
+    background-size: cover;
+    background-position: top;
+  }
+  
+  .gradient-button {
+    background: linear-gradient(to right, #ff4d4e, #ff7361);
+    border-radius: 25px;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    outline: none;
+  }
+  
+  .gradient-button:hover {
+    background: linear-gradient(135deg, #ff3342 0, #ff7d66 100%);
+    box-shadow: 0 10px 45px -10px rgba(255, 70, 84, 0.15), 0 0 20px -10px rgba(255, 70, 84, 0.35), 0 10px 30px -10px rgba(255, 70, 84, 0.25);
+  }
+  
+  .bold {
+    font-weight: 700;
+    font-size: 2rem;
+  }
+  
+  .large-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: #0a0a0a;
+    transition: 0.2s ease-out;
+    filter: drop-shadow(0 4px 3px rgba(10, 10, 10, 0.4));
+  }
+  

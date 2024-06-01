@@ -1,0 +1,68 @@
+/* Navbar styles */
+.navbar {
+    background: #1a1a1a;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s, box-shadow 0.3s;
+  }
+  
+  .navbar-brand img {
+    height: 100%;
+  }
+  
+  .nav-link {
+    color: #f8f9fa;
+    transition: color 0.3s;
+  }
+  
+  .nav-link:hover,
+  .nav-link:focus,
+  .nav-link.active {
+    color: #ff4d4d;
+  }
+  
+  .dropdown-menu {
+    background: #333;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .dropdown-item {
+    color: #f8f9fa;
+  }
+  
+  .dropdown-item:hover,
+  .dropdown-item:focus {
+    background: #555;
+    color: #ff4d4d;
+  }
+  
+  /* Search and Sign Up button styles */
+  .form-control {
+    border-radius: 50px;
+    transition: border 0.3s, box-shadow 0.3s;
+  }
+  
+  .form-control:focus {
+    border-color: #ff4d4d;
+    box-shadow: 0 0 10px rgba(255, 77, 77, 0.5);
+  }
+  
+  .btn-outline-light {
+    border-radius: 50px;
+  }
+  
+  .btn-danger {
+    background: linear-gradient(to right, #ff4d4d, #cc0000);
+    border: none;
+    border-radius: 50px;
+    transition: background 0.3s, box-shadow 0.3s;
+  }
+  
+  .btn-danger:hover,
+  .btn-danger:focus {
+    background: linear-gradient(to right, #cc0000, #990000);
+    box-shadow: 0 10px 45px -10px rgba(255, 77, 77, 0.15),
+                0 0 20px -10px rgba(255, 77, 77, 0.35),
+                0 10px 30px -10px rgba(255, 77, 77, 0.25);
+  }
+  

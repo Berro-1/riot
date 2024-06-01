@@ -1,0 +1,62 @@
+.cover2 {
+    background: radial-gradient(
+      70.71% 70.71% at 50% 50%,
+      rgba(119, 59, 207, 0.4) 0,
+      rgba(10, 10, 10, 0) 75%,
+      rgba(10, 10, 10, 0) 100%
+    );
+  }
+  
+  .scale {
+    transition: transform 0.3s ease;
+  }
+  .scale:hover {
+    animation: scaleUp 0.3s ease forwards;
+  }
+  .scale:not(:hover) {
+    animation: scaleDown 0.3s ease forwards;
+  }
+  @keyframes scaleUp {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(1.03);
+    }
+  }
+  @keyframes scaleDown {
+    0% {
+      transform: scale(1.03);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  .img-fluid {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+  }
+  
+  .position-relative .position-absolute {
+    max-width: 30%;
+    top: 35%;
+    left: 2%;
+  }
+  
+  @media (max-width: 1440px) {
+    .cover2 .list-unstyled .scale {
+      transition: filter 0.3s ease;
+      cursor: pointer;
+    }
+  
+    .cover2 .list-unstyled:hover .round:not(:hover) {
+      filter: grayscale(100%) blur(3px);
+    }
+  
+    .cover2 .list-unstyled .scale .position-relative:hover {
+      border: solid 1px white;
+    }
+  }
+  

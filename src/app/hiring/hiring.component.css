@@ -1,0 +1,97 @@
+.jobflex {
+    flex: 1 1 55%;
+  }
+  
+  .text-align-center {
+    text-align: center;
+  }
+  
+  .job {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+  }
+  
+  .job h2 {
+    font-size: 1.875rem;
+    font-weight: 700;
+    line-height: 1;
+    color: #0a0a0a;
+    margin-bottom: 1.5rem;
+  }
+  
+  .job p {
+    font-size: 1.25rem;
+    color: #656462;
+    line-height: 1.2;
+    letter-spacing: -0.03em;
+    font-weight: 600;
+    max-width: 450px;
+    margin-bottom: 2rem;
+  }
+  
+  .job-count {
+    text-decoration: none;
+    text-align: center;
+    background-color: rgba(173, 172, 170, 0.2);
+    width: 100%;
+    max-width: 220px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .job-count:hover {
+    background-color: #CBCBCB;
+  }
+  
+  a span {
+    display: block;
+    color: #0a0a0a;
+    font-size: 3.75rem;
+    font-weight: 700;
+  }
+  
+  .fw-4 {
+    font-size: 20px;
+    line-height: 20px;
+    font-weight: 700;
+  }
+  
+  .polygon {
+    clip-path: polygon(10% 0, 100% 0, 100% 100%, 0 100%);
+  }
+  
+  .polygon img {
+    width: 100%;
+    height: auto;
+    min-height: 519.6px;
+    object-fit: cover;
+  }
+  
+  @media screen and (max-width: 900px) {
+    .polygon img {
+      height: 100%;
+      min-height: auto;
+      object-fit: contain;
+    }
+  
+    .jobflex {
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+  }
+  
+  @media screen and (max-width: 560px) {
+    .job-count {
+      max-width: 100%;
+    }
+  }
+  
+  @media screen and (max-width: 900px) {
+    .polygon {
+      clip-path: none;
+      width: 100% !important;
+    }
+  }
+  
