@@ -51,7 +51,7 @@
 }
 
 .cover2 .list-unstyled:hover .round:not(:hover) {
-  filter: grayscale(100%) blur(3px);
+  filter: grayscale(80%) blur(4px);
 }
 
 .cover2 .list-unstyled .scale .position-relative:hover {
