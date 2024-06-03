@@ -1,37 +1,25 @@
-<!-- Modal -->
-<div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="signupModalLabel">Sign Up</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form>
-            <div class="mb-3">
-              <label for="signupEmail" class="form-label">Email address</label>
-              <input type="email" class="form-control" id="signupEmail" placeholder="Enter email">
-              <div class="form-text">We'll never share your email with anyone else.</div>
-            </div>
-            <div class="mb-3">
-              <label for="signupPassword" class="form-label">Password</label>
-              <input type="password" class="form-control" id="signupPassword" placeholder="Password">
-            </div>
-            <div class="mb-3">
-              <label for="confirmPassword" class="form-label">Confirm Password</label>
-              <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password">
-            </div>
-            <div class="mb-3 form-check">
-              <input type="checkbox" class="form-check-input" id="agreeTerms">
-              <label class="form-check-label" for="agreeTerms">I agree to the <a href="#">terms and conditions</a></label>
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Create Account</button>
-        </div>
+<div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="authModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header border-bottom-0">
+        <h5 class="modal-title w-100 text-center" id="authModalLabel">{{ isLoginMode ? 'Welcome Back!' : 'Join Us Today!' }}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body py-4">
+        <form (ngSubmit)="onSubmit()" #authForm="ngForm">
+          <div class="mb-3">
+            <input type="email" class="form-control" id="email" name="email" [(ngModel)]="email" required placeholder="Email address">
+          </div>
+          <div class="mb-3">
+            <input type="password" class="form-control" id="password" name="password" [(ngModel)]="password" required placeholder="Password">
+          </div>
+          <div *ngIf="!isLoginMode" class="mb-3">
+            <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" [(ngModel)]="confirmPassword" required placeholder="Confirm Password">
+          </div>
+          <button type="submit" class="btn btn-primary w-100 mb-2">{{ isLoginMode ? 'Log In' : 'Sign Up' }}</button>
+          <button type="button" class="btn btn-outline-secondary w-100" (click)="toggleMode()">{{ isLoginMode ? 'Need an account? Sign Up' : 'Already have an account? Log In' }}</button>
+        </form>
       </div>
     </div>
   </div>
-  
+</div>

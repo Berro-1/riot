@@ -52,6 +52,31 @@
   aspect-ratio: 16 / 9;
 }
 
+.scale {
+  transition: transform 0.3s ease;
+}
+.scale:hover {
+  animation: scaleUp 0.3s ease forwards;
+}
+.scale:not(:hover) {
+  animation: scaleDown 0.3s ease forwards;
+}
+@keyframes scaleUp {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.03);
+  }
+}
+@keyframes scaleDown {
+  0% {
+    transform: scale(1.03);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 .whats-happening-article:hover {
   transform: translateY(-5px);
 }
