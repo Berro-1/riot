@@ -1,0 +1,15 @@
+<div class="container mt-5">
+    <h1 class="text-white mb-4">Your Games</h1>
+    <div class="row">
+      <div class="col-md-4" *ngFor="let game of userGames">
+        <div class="card bg-dark text-white shadow-sm">
+          <img [src]="game.imageUrl" class="card-img-top" alt="{{ game.name }}">
+          <div class="card-body">
+            <h5 class="card-title">{{ game.name }}</h5>
+            <p class="card-text">{{ game.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

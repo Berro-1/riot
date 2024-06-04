@@ -13,6 +13,8 @@ import { RiotForgeComponent } from './riot-forge/riot-forge.component';
 import { HiringComponent } from './hiring/hiring.component';
 import { FooterComponent } from './footer/footer.component';
 import { SignupModalComponent } from './signup-modal/signup-modal.component';
+import { UserPageComponent } from './user-page/user-page.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { SignupModalComponent } from './signup-modal/signup-modal.component';
     RiotForgeComponent,
     HiringComponent,
     FooterComponent,
-    SignupModalComponent
+    SignupModalComponent,
+    UserPageComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
