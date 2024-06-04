@@ -6,7 +6,8 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body py-4">
-        <form (ngSubmit)="onSubmit()" #authForm="ngForm">
+        <form (ngSubmit)="onSubmit(authForm)" #authForm="ngForm">
+
           <div class="mb-3">
             <input type="email" class="form-control" id="email" name="email" [(ngModel)]="email" required placeholder="Email address">
           </div>

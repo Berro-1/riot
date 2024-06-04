@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-signup-modal',
@@ -11,22 +13,46 @@ export class SignupModalComponent implements OnInit {
   password = '';
   confirmPassword = '';
 
-  constructor() { }
+  constructor(private authService: AuthService, private router: Router) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   toggleMode() {
     this.isLoginMode = !this.isLoginMode;  // Toggle between login and sign up mode
   }
 
-  onSubmit() {
+  onSubmit(authForm: any) {  // Accept the form as a parameter
     if (this.isLoginMode) {
-      // Login logic here
-      console.log('Logging in:', this.email, this.password);
+      this.authService.login(this.email, this.password).subscribe(
+        (response) => {
+          if (response.success) {
+            if (response.role == 1) {
+              this.router.navigate(['/user-page']);  // Redirect to user page
+            } else {
+              // Handle other roles if needed
+              console.log('Login successful, but role handling not implemented');
+            }
+          } else {
+            console.error('Login failed:', response.message);
+          }
+        },
+        (error) => {
+          console.error('Login error:', error);
+        }
+      );
     } else {
-      // Sign-up logic here
-      console.log('Signing up:', this.email, this.password, this.confirmPassword);
+      this.authService.signup(this.email, this.password, this.confirmPassword).subscribe(
+        (response) => {
+          if (response.success) {
+            console.log('Signup successful');
+          } else {
+            console.error('Signup failed:', response.message);
+          }
+        },
+        (error) => {
+          console.error('Signup error:', error);
+        }
+      );
     }
   }
 }
