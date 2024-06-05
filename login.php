@@ -29,11 +29,12 @@ if (isset($data->email) && isset($data->password)) {
   if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
     if (password_verify($password, $row['password'])) {
-      echo json_encode(["success" => true, "message" => "Login successful", "role" => $row['role']]);
       $_SESSION['userId'] = $row['id'];
+      echo json_encode(["success" => true, "message" => "Login successful", "role" => $row['role'], "userId" => $row['id']]);
     } else {
       echo json_encode(["success" => false, "message" => "Invalid password"]);
     }
+
   } else {
     echo json_encode(["success" => false, "message" => "User not found"]);
   }

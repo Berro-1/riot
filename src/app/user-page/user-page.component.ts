@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GameService } from '../game.service';
+import { AuthService } from '../auth.service';  // Ensure AuthService is imported
 
 @Component({
   selector: 'app-user-page',
@@ -10,13 +11,35 @@ export class UserPageComponent implements OnInit {
 
   userGames: any[] = [];
   allGames: any[] = [];
-  userId: number = 2; 
+  userId!: number;  // Removed the default value to be fetched from session or backend
 
-  constructor(private gameService: GameService) { }
+  constructor(private gameService: GameService, private authService: AuthService) { }
 
   ngOnInit(): void {
-    this.fetchUserGames();
-    this.fetchAllGames();
+    this.initializeUser();
+  }
+
+  initializeUser(): void {
+    const storedUserId = this.authService.getSessionUserId();
+    if (storedUserId) {
+      this.userId = storedUserId;
+      this.fetchUserGames();
+      this.fetchAllGames();
+      console.log('User ID from Session:', this.userId);
+    } else {
+      this.authService.checkSession().subscribe(response => {
+        if (response.success) {
+          sessionStorage.setItem('userId', response.userId);
+          this.userId = response.userId;
+          this.fetchUserGames();
+          this.fetchAllGames();
+          console.log('User ID from Backend:', this.userId);
+        } else {
+          console.error('No active session:', response.message);
+          // Redirect or handle user not logged in scenario
+        }
+      });
+    }
   }
 
   fetchUserGames(): void {
@@ -29,7 +52,7 @@ export class UserPageComponent implements OnInit {
 
   fetchAllGames(): void {
     this.gameService.getAllGames().subscribe((data: any[]) => {
-      this.allGames = data;
+      this.allGames =  data;
     }, error => {
       console.error('Error fetching all games:', error);
     });
@@ -37,7 +60,7 @@ export class UserPageComponent implements OnInit {
 
   addGame(gameId: number): void {
     this.gameService.addUserGame(this.userId, gameId).subscribe(response => {
-      this.fetchUserGames();
+      this.fetchUserGames();  // Refresh the list of user games after adding a new one
     }, error => {
       console.error('Error adding game:', error);
     });

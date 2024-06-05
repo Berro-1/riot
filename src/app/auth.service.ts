@@ -7,7 +7,7 @@ import { tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:8080/riot';
+  private apiUrl = 'http://localhost/riot';
 
   constructor(private http: HttpClient) {}
 
@@ -25,10 +25,17 @@ export class AuthService {
     }).pipe(
       tap((response: any) => {
         if (response.success) {
-          sessionStorage.setItem('userId', response.userId);
+          sessionStorage.setItem('userId', response.userId); // Store userId in session storage
         }
       })
     );
   }
-  
+
+  getSessionUserId(): number {
+    return +sessionStorage.getItem('userId')!; // Fetch userId from session storage
+  }
+
+  checkSession(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/getSession.php`); // Check session from PHP backend
+  }
 }
