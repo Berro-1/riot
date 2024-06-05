@@ -16,6 +16,8 @@ import { FooterComponent } from './footer/footer.component';
 import { SignupModalComponent } from './signup-modal/signup-modal.component';
 import { UserPageComponent } from './user-page/user-page.component';
 import { HomeComponent } from './home/home.component';
+import { AdminPageComponent } from './admin-page/admin-page.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -30,12 +32,14 @@ import { HomeComponent } from './home/home.component';
     FooterComponent,
     SignupModalComponent,
     UserPageComponent,
-    HomeComponent
+    HomeComponent,
+    AdminPageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule
   ],
   providers: [],

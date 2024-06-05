@@ -15,33 +15,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 }
 
 include 'db.php';
+session_start();
 
 $data = json_decode(file_get_contents("php://input"));
 
 if (isset($data->email) && isset($data->password)) {
-    $email = $data->email;
-    $password = $data->password;
+  $email = $data->email;
+  $password = $data->password;
 
-    $sql = "SELECT * FROM users WHERE email='$email'";
-    $result = $conn->query($sql);
+  $sql = "SELECT * FROM users WHERE email='$email'";
+  $result = $conn->query($sql);
 
-    if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
-        if (password_verify($password, $row['password'])) {
-            echo json_encode([
-                "success" => true,
-                "message" => "Login successful",
-                "role" => $row['role']
-            ]);
-        } else {
-            echo json_encode(["success" => false, "message" => "Invalid password"]);
-        }
+  if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    if (password_verify($password, $row['password'])) {
+      echo json_encode(["success" => true, "message" => "Login successful", "role" => $row['role']]);
+      $_SESSION['userId'] = $row['id'];
     } else {
-        echo json_encode(["success" => false, "message" => "User not found"]);
+      echo json_encode(["success" => false, "message" => "Invalid password"]);
     }
+  } else {
+    echo json_encode(["success" => false, "message" => "User not found"]);
+  }
 
-    $conn->close();
+  $conn->close();
 } else {
-    echo json_encode(["success" => false, "message" => "Invalid input"]);
+  echo json_encode(["success" => false, "message" => "Invalid input"]);
 }
 ?>

@@ -1,0 +1,30 @@
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: #1e1e1e;
+    color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
+  
+  h2, h3 {
+    color: #ff4d4d;
+  }
+  
+  .form-group {
+    margin-bottom: 1rem;
+  }
+  
+  .table {
+    margin-top: 2rem;
+  }
+  
+  .table-dark {
+    background: #2c2c2c;
+  }
+  
+  .table-dark th, .table-dark td {
+    color: #ffffff;
+  }
+  

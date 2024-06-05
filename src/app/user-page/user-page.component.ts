@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GameService } from '../game.service';
 
 @Component({
   selector: 'app-user-page',
@@ -6,14 +7,39 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-page.component.css']
 })
 export class UserPageComponent implements OnInit {
-  userGames = [
-    { name: 'League of Legends', description: 'A multiplayer online battle arena game.', imageUrl: 'assets/images/lol.png' },
-    { name: 'Valorant', description: 'A 5v5 character-based tactical FPS.', imageUrl: 'assets/images/valorant.png' },
-    { name: 'Teamfight Tactics', description: 'An auto-battler game by Riot Games.', imageUrl: 'assets/images/tft.png' },
-    { name: 'Legends of Runeterra', description: 'A digital collectible card game.', imageUrl: 'assets/images/lor.png' }
-  ];
 
-  constructor() {}
+  userGames: any[] = [];
+  allGames: any[] = [];
+  userId: number = 2; 
 
-  ngOnInit(): void {}
+  constructor(private gameService: GameService) { }
+
+  ngOnInit(): void {
+    this.fetchUserGames();
+    this.fetchAllGames();
+  }
+
+  fetchUserGames(): void {
+    this.gameService.getUserGames(this.userId).subscribe((data: any[]) => {
+      this.userGames = data;
+    }, error => {
+      console.error('Error fetching user games:', error);
+    });
+  }
+
+  fetchAllGames(): void {
+    this.gameService.getAllGames().subscribe((data: any[]) => {
+      this.allGames = data;
+    }, error => {
+      console.error('Error fetching all games:', error);
+    });
+  }
+
+  addGame(gameId: number): void {
+    this.gameService.addUserGame(this.userId, gameId).subscribe(response => {
+      this.fetchUserGames();
+    }, error => {
+      console.error('Error adding game:', error);
+    });
+  }
 }

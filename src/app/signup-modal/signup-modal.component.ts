@@ -28,7 +28,11 @@ export class SignupModalComponent implements OnInit {
           if (response.success) {
             if (response.role == 1) {
               this.router.navigate(['/user-page']);  // Redirect to user page
-            } else {
+            } 
+            else if (response.role == 0) {
+            this.router.navigate(['/admin-page']);  // Redirect to admin page
+              } 
+            else {
               // Handle other roles if needed
               console.log('Login successful, but role handling not implemented');
             }
